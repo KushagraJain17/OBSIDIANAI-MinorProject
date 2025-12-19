@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObsidianAI - Login</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="auth-page-container">
+        <div class="auth-external-header">
+            <div class="logo">
+                <img src="logo.png" alt="ObsidianAI Logo" style="width: 40px; height: 40px; object-fit: contain;">
+                <span>ObsidianAI</span>
+            </div>
+        </div>
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 id="auth-title">Login</h1>
+            </div>
+
+            <div class="auth-tabs">
+                <div class="tab-slider"></div>
+                <button class="auth-tab active" id="tab-login" onclick="activateLogin()">Login</button>
+                <button class="auth-tab" id="tab-register" onclick="activateRegister()">Register</button>
+            </div>
+
+            <div class="forms-wrapper">
+                <div class="form login-form active" id="login-panel">
+                    <div class="input-group">
+                        <input type="text" id="login-username" placeholder="Username" autocomplete="username">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="login-password" placeholder="Password"
+                            autocomplete="current-password">
+                    </div>
+
+                    <div class="forgot-link">
+                        <a href="javascript:void(0)" onclick="activateForgot()">Forgot password?</a>
+                    </div>
+                    <p id="login-error" class="error-message"></p>
+
+                    <button class="auth-submit-btn" onclick="login()">Login</button>
+
+                    <p class="switch-text">
+                        Not a member?
+                        <button class="link-btn" onclick="activateRegister()">Register now</button>
+                    </p>
+                </div>
+
+                <div class="form forgot-form" id="forgot-panel">
+                    <p style="margin-bottom: 15px; color: #888;">Enter your email to reset your password</p>
+                    <div class="input-group">
+                        <input type="email" id="forgot-email" placeholder="Email Address">
+                    </div>
+
+                    <div class="verification-section" id="forgot-verification"
+                        style="display: none; border: 1px solid var(--border-color); padding: 20px; border-radius: 16px; margin-top: 15px;">
+                        <div class="verification-input-row" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                            <input type="text" id="forgot-code" placeholder="Code" maxlength="6"
+                                style="flex: 1; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 10px; color: #fff;">
+                            <button class="send-code-btn" onclick="sendForgotCode()"
+                                style="padding: 0 15px; background: #333; color: #fff; border: 1px solid #444; border-radius: 10px; cursor: pointer;">Resend</button>
+                        </div>
+                        <input type="password" id="forgot-new-password" placeholder="New Password"
+                            style="width: 100%; padding: 16px 18px; background-color: var(--input-bg); border: 1px solid var(--border-color); border-radius: 14px; color: var(--text-white); margin-bottom: 15px;">
+                        <button class="auth-submit-btn" onclick="resetForgotPassword()">Reset Password</button>
+                    </div>
+
+                    <button class="auth-submit-btn" id="send-forgot-btn" onclick="sendForgotCode()">Send Code</button>
+
+                    <p class="switch-text">
+                        Remembered?
+                        <button class="link-btn" onclick="activateLogin()">Login now</button>
+                    </p>
+                </div>
+
+                <div class="form register-form" id="register-panel">
+                    <div class="input-group">
+                        <input type="text" id="register-username" placeholder="Username" autocomplete="username">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="register-email" placeholder="Email Address" autocomplete="email">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="register-password" placeholder="Password"
+                            autocomplete="new-password">
+                    </div>
+
+                    <div class="verification-section"
+                        style="border: 1px solid var(--border-color); padding: 20px; border-radius: 16px; margin-top: 5px;">
+                        <div class="verification-input-row" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                            <input type="text" id="verification-code" placeholder="Code" maxlength="6"
+                                style="flex: 1; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 10px; color: #fff;">
+                            <button class="send-code-btn" id="send-code-btn" onclick="sendVerificationCode()"
+                                style="padding: 0 15px; background: #333; color: #fff; border: 1px solid #444; border-radius: 10px; cursor: pointer;">Send
+                                Code</button>
+                        </div>
+                        <button class="auth-submit-btn" id="verify-code-btn" onclick="verifyEmailCode()"
+                            style="margin-top: 0; padding: 12px;">Verify Email</button>
+                        <p id="verification-status" class="info-message"
+                            style="margin-top: 10px; font-size: 0.85rem; color: #888;"></p>
+                        <p id="register-error" class="error-message"></p>
+                    </div>
+
+                    <button class="auth-submit-btn" id="register-btn" onclick="register()" disabled>Register</button>
+
+                    <p class="switch-text">
+                        Already a member?
+                        <button class="link-btn" onclick="activateLogin()">Login now</button>
+                    </p>
+                </div>
+            </div>
+            <p id="auth-error" class="error-message"></p>
+        </div>
+    </div>
+
+    <script src="/auth.js"></script>
+</body>
+
+</html>
